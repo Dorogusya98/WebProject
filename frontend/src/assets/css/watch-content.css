@@ -1,0 +1,157 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: inherit;
+}
+
+.row {
+    width: inherit !important;
+    max-width: inherit !important;
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to left, transparent, red 5%, red 95%, transparent);
+}
+
+video {
+  width: inherit;
+}
+
+.watch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+    margin: auto;
+}
+
+.info-watch-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.detail-watch-content {
+  color: white;
+}
+
+.cover-watch-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+  width: 350px;
+  height: 500px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+
+
+.cover-watch-content img {
+  height: inherit;
+}
+
+.video-watch-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: inherit;
+  margin: 0;
+}
+
+/* ----------------------------------------------- */
+
+.infoep:hover {
+  color: red;
+}
+
+.infoepbox {
+    display: inline-block;
+    width: 100%;
+    background-color: black;
+    float: left;
+    margin-bottom: -1px;
+}
+
+.infovanr {
+    color: #e81e30;
+    font-family: "Comfortaa";
+    font-size: 19px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.infovan {
+    color: #ffffff;
+    font-family: "Comfortaa";
+    font-size: 19px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.infoepmain {
+    width: 80px;
+    height: 80px;
+    background-color: #333333;
+    float: left;
+    /* padding-top: 1px; */
+}
+
+.infoep {
+    /*background-image: url(ah_play_transparent.png);*/
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: 79px 79px;
+    width: 79px;
+    height: 79px;
+    float: left;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.infoept {
+    background-color: black;
+    width: 79px;
+    height: 79px;
+}
+
+.infoept1r, .infoept1 {
+    text-align: center;
+    font-weight: normal;
+    height: 25px;
+    font-size: 12px;
+    font-family: "Comfortaa";
+    color: white;
+}
+
+.infoept2r, .infoept2 {
+    text-align: center;
+    font-size: 35px;
+    height: 29px;
+    font-family: "Comfortaa";
+}
+
+.infoept3r, .infoept3 {
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
+    height: 25px;
+    font-family: "Comfortaa";
+    color: white;
+}
+
+.centerv {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
