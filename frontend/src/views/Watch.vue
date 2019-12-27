@@ -15,6 +15,15 @@
           суждено спасти мир от неминуемой гибели. Для Героя Щита, слабейшего из четвёрки, приключение окажется не таким радостным. Почти сразу Наофуми оказывается предан, обвинён в изнасиловании и оставлен один, без гроша в кармане. Не к кому
           податься и некуда бежать. Всё, что у него есть — его щит и жажда мести.</p>
       </div>
+
+      <div v-for="item in models" :key="item.id" class="watch-item">
+        <h3>
+          <router-link :to="{name: 'article', params: {id: item.id}}">
+            {{item.title}}
+          </router-link>
+        </h3>
+      </div>
+
       <div class="cover-watch-content">
         <img src="../assets/img/f.png" alt="gtfo">
       </div>
@@ -197,3 +206,20 @@
 <style>
   @import "../assets/css/watch-content.css";
 </style>
+
+<script>
+  import HTTP from "../components/http";
+
+  export default {
+    name: "Watch",
+    data() {
+      return {
+        models: []
+      };
+    },
+    created() {
+      HTTP.get('/')
+              .then(response => (this.models = response.data));
+    }
+  }
+</script>

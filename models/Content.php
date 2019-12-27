@@ -5,25 +5,26 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Content".
+ * This is the model class for table "Contents".
  *
  * @property int $id
- * @property string $Title
- * @property string $Description
- * @property int|null $Users_id
+ * @property string $title
+ * @property string $category
+ * @property string $description
+ * @property int $users_id
  *
  * @property Users $users
  * @property Images[] $images
  * @property Videos[] $videos
  */
-class Content extends BaseModel
+class Content extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'Content';
+        return 'Contents';
     }
 
     /**
@@ -32,10 +33,10 @@ class Content extends BaseModel
     public function rules()
     {
         return [
-            [['Title', 'Description'], 'required'],
-            [['Users_id'], 'integer'],
-            [['Title', 'Description'], 'string', 'max' => 128],
-            [['Users_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['Users_id' => 'id']],
+            [['title', 'category', 'description', 'users_id'], 'required'],
+            [['users_id'], 'integer'],
+            [['title', 'category', 'description'], 'string', 'max' => 128],
+            [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['users_id' => 'id']],
         ];
     }
 
@@ -46,9 +47,10 @@ class Content extends BaseModel
     {
         return [
             'id' => 'ID',
-            'Title' => 'Title',
-            'Description' => 'Description',
-            'Users_id' => 'Users ID',
+            'title' => 'Title',
+            'category' => 'Category',
+            'description' => 'Description',
+            'users_id' => 'Users ID',
         ];
     }
 
@@ -57,7 +59,7 @@ class Content extends BaseModel
      */
     public function getUsers()
     {
-        return $this->hasOne(Users::className(), ['id' => 'Users_id']);
+        return $this->hasOne(Users::className(), ['id' => 'users_id']);
     }
 
     /**

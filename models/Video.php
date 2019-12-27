@@ -11,9 +11,9 @@ use Yii;
  * @property string $Path
  * @property int $Content_id
  *
- * @property Content $content
+ * @property Contents $content
  */
-class Video extends BaseModel
+class Video extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -32,7 +32,7 @@ class Video extends BaseModel
             [['Path', 'Content_id'], 'required'],
             [['Content_id'], 'integer'],
             [['Path'], 'string', 'max' => 128],
-            [['Content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['Content_id' => 'id']],
+            [['Content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contents::className(), 'targetAttribute' => ['Content_id' => 'id']],
         ];
     }
 
@@ -53,6 +53,6 @@ class Video extends BaseModel
      */
     public function getContent()
     {
-        return $this->hasOne(Content::className(), ['id' => 'Content_id']);
+        return $this->hasOne(Contents::className(), ['id' => 'Content_id']);
     }
 }

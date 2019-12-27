@@ -8,14 +8,14 @@ use Yii;
  * This is the model class for table "Users".
  *
  * @property int $id
- * @property string $Login
- * @property string $Email
- * @property string $Password
- * @property int $Role
+ * @property string $login
+ * @property string $email
+ * @property string $password
+ * @property int $role
  *
- * @property Content[] $contents
+ * @property Contents[] $contents
  */
-class User extends BaseModel
+class User extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -31,9 +31,9 @@ class User extends BaseModel
     public function rules()
     {
         return [
-            [['Login', 'Email', 'Password', 'Role'], 'required'],
-            [['Role'], 'integer'],
-            [['Login', 'Email', 'Password'], 'string', 'max' => 128],
+            [['login', 'email', 'password', 'role'], 'required'],
+            [['role'], 'integer'],
+            [['login', 'email', 'password'], 'string', 'max' => 128],
         ];
     }
 
@@ -44,10 +44,10 @@ class User extends BaseModel
     {
         return [
             'id' => 'ID',
-            'Login' => 'Login',
-            'Email' => 'Email',
-            'Password' => 'Password',
-            'Role' => 'Role',
+            'login' => 'Login',
+            'email' => 'Email',
+            'password' => 'Password',
+            'role' => 'Role',
         ];
     }
 
@@ -56,6 +56,6 @@ class User extends BaseModel
      */
     public function getContents()
     {
-        return $this->hasMany(Content::className(), ['Users_id' => 'id']);
+        return $this->hasMany(Contents::className(), ['users_id' => 'id']);
     }
 }
