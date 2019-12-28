@@ -52,19 +52,22 @@ $config = [
             'showScriptName' => false,
             //'enableScriptParsing' => true,
             'rules' => [
-                'news/<id:\d+>' => 'news/view',
-                'articles' => 'news/index',
+                'content/<id:\d+>' => 'content/view',
+                'detail-watch-content' => 'watch/index',
+                'OPTIONS <module:\w+>s/<action>' => 'api/default/options',
             [
                 'class' => 'yii\rest\UrlRule',
-                'controller' => ['api/news']
+                'controller' => ['api/content']
             ],
+                //'api/<controller>/<id:\d+><action>' => 'api/<controller>/<action>',
+                'api/<controller>/<action>' => 'api/<controller>/<action>'
         ],
     ],
     ],
     'params' => $params,
     'modules' => [
         'api' => [
-            'class' => 'app\modules\api\Modules'
+            'class' => 'app\modules\api\ApiModule'
         ]
     ]
 ];

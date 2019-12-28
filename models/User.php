@@ -13,7 +13,7 @@ use Yii;
  * @property string $password
  * @property int $role
  *
- * @property Contents[] $contents
+ * @property Content[] $contents
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -56,6 +56,6 @@ class User extends \yii\db\ActiveRecord
      */
     public function getContents()
     {
-        return $this->hasMany(Contents::className(), ['users_id' => 'id']);
+        return $this->hasMany(Content::className(), ['users_id' => 'id']);
     }
 }

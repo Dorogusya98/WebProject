@@ -1029,10 +1029,18 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
+import HTTP from "../components/http";
+
 export default {
-  name: 'content',
-  components: {
-    // HelloWorld
+  name: "content",
+  data() {
+    return {
+      models: []
+    };
+  },
+  created() {
+    HTTP.get('/content')
+            .then(response => (this.models = response.data));
   }
 }
 </script>

@@ -13,9 +13,9 @@ use Yii;
  * @property string $description
  * @property int $users_id
  *
- * @property Users $users
- * @property Images[] $images
- * @property Videos[] $videos
+ * @property User $users
+ * @property Image[] $images
+ * @property Video[] $videos
  */
 class Content extends \yii\db\ActiveRecord
 {
@@ -36,7 +36,7 @@ class Content extends \yii\db\ActiveRecord
             [['title', 'category', 'description', 'users_id'], 'required'],
             [['users_id'], 'integer'],
             [['title', 'category', 'description'], 'string', 'max' => 128],
-            [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['users_id' => 'id']],
+            [['users_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['users_id' => 'id']],
         ];
     }
 
@@ -59,7 +59,7 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasOne(Users::className(), ['id' => 'users_id']);
+        return $this->hasOne(User::className(), ['id' => 'users_id']);
     }
 
     /**
@@ -67,7 +67,7 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getImages()
     {
-        return $this->hasMany(Images::className(), ['Content_id' => 'id']);
+        return $this->hasMany(Image::className(), ['Content_id' => 'id']);
     }
 
     /**
@@ -75,6 +75,6 @@ class Content extends \yii\db\ActiveRecord
      */
     public function getVideos()
     {
-        return $this->hasMany(Videos::className(), ['Content_id' => 'id']);
+        return $this->hasMany(Video::className(), ['Content_id' => 'id']);
     }
 }

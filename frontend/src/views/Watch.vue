@@ -2,26 +2,12 @@
   <div class="watch">
     <div class="info-watch-content">
       <div class="detail-watch-content">
-        <h1>Восхождение героя щита | Tate no Yuusha no Nariagari</h1>
+        <h1>{{model.title}}</h1>
         <hr class="poloska-detail" style="margin-top: 7px; margin-bottom: 7px;">
-        <b>Сезон:</b> 2019 зима
-        <br>
-        <b>Тип:</b> ТВ (25 эп.), 25 мин.
-        <br>
-        <b>Жанры:</b> экшен, фэнтези, приключения, драма, сейнен
+        <b>Жанры:</b> {{model.category}}
         <br>
         <hr class="poloska-detail" style="margin-top: 7px; margin-bottom: 7px;">
-        <p>Иватани Наофуми затворник. Все свои дни он обычно проводил за играми и мангой. Но внезапно, неожиданно для себя, Иватани оказывается в ином мире! Выясняется, что он стал одним из четырёх героев, обладающих легендарным оружием, которым
-          суждено спасти мир от неминуемой гибели. Для Героя Щита, слабейшего из четвёрки, приключение окажется не таким радостным. Почти сразу Наофуми оказывается предан, обвинён в изнасиловании и оставлен один, без гроша в кармане. Не к кому
-          податься и некуда бежать. Всё, что у него есть — его щит и жажда мести.</p>
-      </div>
-
-      <div v-for="item in models" :key="item.id" class="watch-item">
-        <h3>
-          <router-link :to="{name: 'article', params: {id: item.id}}">
-            {{item.title}}
-          </router-link>
-        </h3>
+        <p>{{model.description}}</p>
       </div>
 
       <div class="cover-watch-content">
@@ -211,15 +197,16 @@
   import HTTP from "../components/http";
 
   export default {
-    name: "Watch",
+    name: "detail-watch-content",
     data() {
       return {
-        models: []
+        model: {}
       };
     },
     created() {
-      HTTP.get('/')
-              .then(response => (this.models = response.data));
+      var id = this.$route.params.id;
+      HTTP.get('/contents/' + id)
+              .then(response => (this.model = response.data));
     }
   }
 </script>
