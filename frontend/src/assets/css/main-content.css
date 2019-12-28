@@ -1,6 +1,6 @@
 .content {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start !important;
   justify-content: flex-start;
   min-width: inherit;
 
@@ -195,7 +195,7 @@
 .my-row {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
   flex-direction: row !important;
   min-width: inherit;
   width: 100% !important;
@@ -236,6 +236,7 @@
   perspective: 800px;
   position: relative;
   text-align: center;
+  padding-left: 5%;
 }
 
 .flip:hover .card {

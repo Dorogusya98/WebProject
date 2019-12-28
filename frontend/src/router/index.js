@@ -16,8 +16,8 @@ const routes = [
   //   component: () => import('../views/Watch.vue')
   // },
   {
-    path: '/content/:id',
-    name: 'watch',
+    path: '/contents/:id',
+    name: 'contents',
     component: () => import('../views/Watch.vue')
   }
 ]

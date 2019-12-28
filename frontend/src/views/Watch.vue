@@ -4,7 +4,7 @@
       <div class="detail-watch-content">
         <h1>{{model.title}}</h1>
         <hr class="poloska-detail" style="margin-top: 7px; margin-bottom: 7px;">
-        <b>Жанры:</b> {{model.category}}
+        <b>Жанры:</b> {{model.genre}}
         <br>
         <hr class="poloska-detail" style="margin-top: 7px; margin-bottom: 7px;">
         <p>{{model.description}}</p>

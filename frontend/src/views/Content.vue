@@ -3,6 +3,7 @@
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
     <div class="info-content">
+
       <div class="info-hello">
         <img src="../assets/img/hello.gif" alt="gtfo">
       </div>
@@ -11,132 +12,16 @@
           <a href="#">Популярное</a>
         </div>
         <div class="info-popular-titles">
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-        </div>
-        <div class="info-popular-titles">
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-        </div>
-        <div class="info-popular-titles">
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-        </div>
-        <div class="info-popular-titles">
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
-          <a href="#/watch" class="info-popular-title">
-            <div class="title-img">
-              <img src="../assets/img/cover.png" alt="gtfo">
-            </div>
-            <p>Восхождение героя щита</p>
-          </a>
+          <div v-for="item in models" :key="item.id" class="watch-item">
+              <router-link :to="{name: 'contents', params: {id: item.id}}">
+                <a href="#/watch" class="info-popular-title">
+                  <div class="title-img">
+                    <img src="../assets/img/cover.png" alt="gtfo">
+                  </div>
+                  <p>{{item.title}}</p>
+                </a>
+              </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -188,7 +73,7 @@
         <a href="#">Новинки</a>
         <a href="#">Премьеры</a>
       </div>
-      <div class="video-content">
+      <div id="mults" class="video-content">
         <div class="video-category">
           <a href="#">Мультфильмы</a>
         </div>
@@ -197,180 +82,23 @@
             <div class="carousel-item active">
               <div class="container">
                 <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-
-
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
+                  <div v-for="item in models" :key="item.id" class="watch-item">
+                    <div class="col-sm-3">
+                      <div class="flip">
+                        <div class="card">
+                          <div class="face front">
+                            <div class="inner">
+                              <img src="../assets/img/cover.png">
+                            </div>
                           </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
+                          <div class="face back">
+                            <div class="inner text-center">
+                              <h3>{{item.title}}</h3>
+                              <router-link :to="{name: 'contents', params: {id: item.id}}">
+                                <button type="submit" class="btn btn-default">Смотреть</button>
+                              </router-link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -379,7 +107,6 @@
                 </div>
               </div>
             </div>
-
             <div>
               <a class="carousel-control-prev" href="#carousel-card-1" role="button" data-slide="prev">
                 <i class="fa fa-chevron-left"></i>
@@ -395,7 +122,7 @@
 
         </div>
       </div>
-      <div class="video-content">
+      <div id="anime" class="video-content">
         <div class="video-category">
           <a href="#">Аниме</a>
         </div>
@@ -404,180 +131,23 @@
             <div class="carousel-item active">
               <div class="container">
                 <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-
-
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
+                  <div v-for="item in models" :key="item.id" class="watch-item">
+                    <div class="col-sm-3">
+                      <div class="flip">
+                        <div class="card">
+                          <div class="face front">
+                            <div class="inner">
+                              <img src="../assets/img/cover.png">
+                            </div>
                           </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
+                          <div class="face back">
+                            <div class="inner text-center">
+                              <h3>{{item.title}}</h3>
+                              <router-link :to="{name: 'contents', params: {id: item.id}}">
+                                <button type="submit" class="btn btn-default">Смотреть</button>
+                              </router-link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -602,7 +172,7 @@
 
         </div>
       </div>
-      <div class="video-content">
+      <div id="serials" class="video-content">
         <div class="video-category">
           <a href="#">Сериалы</a>
         </div>
@@ -611,180 +181,23 @@
             <div class="carousel-item active">
               <div class="container">
                 <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-
-
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
+                  <div v-for="item in models" :key="item.id" class="watch-item">
+                    <div class="col-sm-3">
+                      <div class="flip">
+                        <div class="card">
+                          <div class="face front">
+                            <div class="inner">
+                              <img src="../assets/img/cover.png">
+                            </div>
                           </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
+                          <div class="face back">
+                            <div class="inner text-center">
+                              <h3>{{item.title}}</h3>
+                              <router-link :to="{name: 'contents', params: {id: item.id}}">
+                                <button type="submit" class="btn btn-default">Смотреть</button>
+                              </router-link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -809,7 +222,7 @@
 
         </div>
       </div>
-      <div class="video-content">
+      <div id="films" class="video-content">
         <div class="video-category">
           <a href="#">Фильмы</a>
         </div>
@@ -818,180 +231,23 @@
             <div class="carousel-item active">
               <div class="container">
                 <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-
-
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="my-row row flex-nowrap">
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
+                  <div v-for="item in models" :key="item.id" class="watch-item">
+                    <div class="col-sm-3">
+                      <div class="flip">
+                        <div class="card">
+                          <div class="face front">
+                            <div class="inner">
+                              <img src="../assets/img/cover.png">
+                            </div>
                           </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="flip">
-                      <div class="card">
-                        <div class="face front">
-                          <div class="inner">
-                            <img src="../assets/img/cover.png">
-                          </div>
-                        </div>
-                        <div class="face back">
-                          <div class="inner text-center">
-                            <h3>Описание...</h3>
-                            <form action="#/watch"><button type="submit" class="btn btn-default">Смотреть</button></form>
+                          <div class="face back">
+                            <div class="inner text-center">
+                              <h3>{{item.title}}</h3>
+                              <router-link :to="{name: 'contents', params: {id: item.id}}">
+                                <button type="submit" class="btn btn-default">Смотреть</button>
+                              </router-link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1023,6 +279,12 @@
 
 <style>
   @import "../assets/css/main-content.css";
+
+  .watch-item {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
 </style>
 
 <script>
@@ -1039,7 +301,7 @@ export default {
     };
   },
   created() {
-    HTTP.get('/content')
+    HTTP.get('/contents')
             .then(response => (this.models = response.data));
   }
 }

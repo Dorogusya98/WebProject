@@ -13,7 +13,6 @@
           <li data-target="#carousel" data-slide-to="4"></li>
         </ol>
 
-
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active">
             <a href="#"><img src="./assets/img/header-cover-1.png"></a>
@@ -70,16 +69,16 @@
               <a href="#" class="button-icon"><i class="fa fa-random" aria-hidden="true"></i></a>
             </div>
             <div class="button-category" id="c1">
-              <a href="#" class="button-icon">Мультфильмы</a>
+              <a href="#mults" class="button-icon" @click="scrollBehavior(this)">Мультфильмы</a>
             </div>
             <div class="button-category" id="c2">
-              <a href="#" class="button-icon">Аниме</a>
+              <a href="#anime" class="button-icon" @click="scrollBehavior(this)">Аниме</a>
             </div>
             <div class="button-category" id="c3">
-              <a href="#" class="button-icon">Сериалы</a>
+              <a href="#serials" class="button-icon" @click="scrollBehavior(this)">Сериалы</a>
             </div>
             <div class="button-category" id="c4">
-              <a href="#" class="button-icon">Фильмы</a>
+              <a href="#films" class="button-icon" @click="scrollBehavior(this)">Фильмы</a>
             </div>
           </div>
           <div class="nav-user">
@@ -87,7 +86,7 @@
               <a href="#" class="button-search"><img src="./assets/img/search.svg" alt="gtfo" /></a>
               <input placeholder="поиск..." class="search-line"/>
             </div>
-            <div class="nav-status">
+            <div class="nav-status" @click="showModal">
               <div class="button-user">
                 <img src="./assets/img/shield-2.svg" alt="gtfo">
                 <div class="user-icon fa-layers fa-fw ">
@@ -129,30 +128,30 @@
     </footer>
 
     <div align="center" class="fond">
-      <div id="myfond_gris"></div>
-      <div class="form-wrapper" id="wrapper-login">
-        <img src='assets/img/f.png' alt='bg1' />
+      <div id="myfond_gris" v-if="showBack" @click="hideModal"></div>
+      <div class="form-wrapper" id="wrapper-login" v-if="showLoginModal">
+        <img src='./assets/img/f.png' alt='bg1' />
         <div class="content-wrapper" id="content-login">
           <h1>С возвращением!</h1>
           <form class="form-login">
-            <input type="text" name="username" placeholder="Username" class="input-username" required pattern="[0-9A-Za-z]{6,30}"/>
-            <input type="password" name="password" placeholder="Password" class="input-password" required pattern="[0-9A-Za-z]{6,30}"/>
+            <input type="text" name="username" placeholder="Логин" class="input-username" required pattern="[0-9A-Za-z]"/>
+            <input type="password" name="password" placeholder="Пароль" class="input-password" required pattern="[0-9A-Za-z]"/>
             <button type="submit" class="btn-login">Вход</button>
           </form>
-          <p>Нету аккаунта? <a href="#wrapper-signup">Регистрация</a></p>
+          <p>Нету аккаунта? <a href="#" @click="swipeModal">Регистрация</a></p>
         </div>
       </div>
-      <div class="form-wrapper" id="wrapper-signup">
-        <img src='assets/img/f.png ' alt='bg2' />
+      <div class="form-wrapper" id="wrapper-signup" v-if="showRegisterModal">
+        <img src='./assets/img/f.png' alt='bg2' />
         <div class="content-wrapper" id="content-signin">
           <h1>Добро Пожаловать!</h1>
           <form class="form-login">
-            <input type="email" name="email" placeholder="Email address" class="input-email" required="required"/>
-            <input type="text" name="username" placeholder="Username" class="input-username" required pattern="[0-9A-Za-z]{6,30}"/>
-            <input type="password" name="password" placeholder="Password" class="input-password" required pattern="[0-9A-Za-z]{6,30}"/>
+            <input type="email" name="email" placeholder="Email" class="input-email" required="required"/>
+            <input type="text" name="username" placeholder="Логин" class="input-username" required pattern="[0-9A-Za-z]"/>
+            <input type="password" name="password" placeholder="Пароль" class="input-password" required pattern="[0-9A-Za-z]"/>
             <button type="submit" class="btn-login">Регистрация</button>
           </form>
-          <p>Есть аккаунт? <a href="#wrapper-login">Вход</a></p>
+          <p>Есть аккаунт? <a href="#" @click="swipeModal">Вход</a></p>
         </div>
       </div>
     </div>
@@ -164,12 +163,21 @@
     <link href="http://allfont.ru/allfont.css?fonts=aniron-bold" rel="stylesheet" type="text/css">
   </div>
 
+
 </template>
 
 <style>
   @import "assets/css/main_header.css";
   @import "assets/css/Bold-BS4-Footer-Simple.css";
   @import "assets/css/login-sign-form.css";
+
+  .form-wrapper {
+    font-family: "Comfortaa";
+    font-weight: bold;
+  }
+  .form-wrapper h1 {
+    font-size: 20px;
+  }
 
   .link-animation {
     font-family: "Bauhaus 93";
@@ -254,11 +262,48 @@
 
 
 <script>
-// export default {
-//   mounted() {
-//     let fontawesomeScript = document.createElement('script');
-//     fontawesomeScript.setAttribute('src', 'https://kit.fontawesome.com/9feb37905a.js');
-//     document.head.appendChild(fontawesomeScript);
-//   }
-// }
+  // import VueRouter from "vue-router";
+  // import Content from "./views/Content";
+  //
+  // const routes = [
+  //   { path: '/content', component: Content}
+  // ];
+  //
+  // const router = new VueRouter({
+  //   mode: 'history',
+  //   routes: routes
+  // });
+  export default {
+    el: '#app',
+    data() {
+      return {
+        showBack: false,
+        showLoginModal: false,
+        showRegisterModal: false
+      }
+    },
+    methods: {
+      showModal: function() {
+        this.showBack = true;
+        this.showLoginModal = true;
+      },
+      hideModal: function() {
+        this.showBack = false;
+        this.showLoginModal = false;
+        this.showRegisterModal = false;
+      },
+      swipeModal: function() {
+        this.showLoginModal = !this.showLoginModal;
+        this.showRegisterModal = !this.showRegisterModal;
+      },
+      scrollBehavior: function (to) {
+        if (to.hash) {
+          return {
+            selector: to.hash
+          }
+        }
+      }
+    }
+  }
+
 </script>
