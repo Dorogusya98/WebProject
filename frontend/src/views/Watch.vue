@@ -11,7 +11,7 @@
       </div>
 
       <div class="cover-watch-content">
-        <img src="../assets/img/f.png" alt="gtfo">
+        <img :src="model.cover_path" alt="gtfo">
       </div>
     </div>
 

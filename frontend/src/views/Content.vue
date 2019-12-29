@@ -16,7 +16,7 @@
               <router-link :to="{name: 'contents', params: {id: item.id}}">
                 <a href="#/watch" class="info-popular-title">
                   <div class="title-img">
-                    <img src="../assets/img/1.jpg" alt="gtfo">
+                    <img :src="item.cover_path" alt="gtfo">
                   </div>
                   <p>{{item.title}}</p>
                 </a>

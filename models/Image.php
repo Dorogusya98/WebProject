@@ -32,7 +32,7 @@ class Image extends \yii\db\ActiveRecord
             [['Path', 'Content_id'], 'required'],
             [['Content_id'], 'integer'],
             [['Path'], 'string', 'max' => 128],
-            [['Content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Content::className(), 'targetAttribute' => ['Content_id' => 'id']],
+            [['Content_id'], 'exist', 'skipOnError' => true, 'targetClass' => Contents::className(), 'targetAttribute' => ['Content_id' => 'id']],
         ];
     }
 
