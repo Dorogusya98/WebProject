@@ -16,7 +16,7 @@
               <router-link :to="{name: 'contents', params: {id: item.id}}">
                 <a href="#/watch" class="info-popular-title">
                   <div class="title-img">
-                    <img src="../assets/img/cover.png" alt="gtfo">
+                    <img src="../assets/img/1.jpg" alt="gtfo">
                   </div>
                   <p>{{item.title}}</p>
                 </a>
@@ -89,7 +89,7 @@
                         <div class="card">
                           <div class="face front">
                             <div class="inner">
-                              <img src="../assets/img/cover.png">
+                              <img :src="item.cover_path">
                             </div>
                           </div>
                           <div class="face back">
@@ -138,7 +138,7 @@
                         <div class="card">
                           <div class="face front">
                             <div class="inner">
-                              <img src="../assets/img/cover.png">
+                              <img :src="item.cover_path">
                             </div>
                           </div>
                           <div class="face back">
@@ -188,7 +188,7 @@
                         <div class="card">
                           <div class="face front">
                             <div class="inner">
-                              <img src="../assets/img/cover.png">
+                              <img :src="item.cover_path">
                             </div>
                           </div>
                           <div class="face back">
@@ -238,7 +238,7 @@
                         <div class="card">
                           <div class="face front">
                             <div class="inner">
-                              <img src="../assets/img/cover.png">
+                              <img :src="item.cover_path">
                             </div>
                           </div>
                           <div class="face back">
