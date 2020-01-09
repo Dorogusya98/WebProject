@@ -2,6 +2,8 @@
 
 <template>
   <div id="app">
+    <p class="swipe-form" v-if="showLoginModal">Нету аккаунта? <a href="#" @click="swipeModal">Регистрация</a></p>
+    <p class="swipe-form" v-if="showRegisterModal">Есть аккаунт? <a href="#" @click="swipeModal">Вход</a></p>
     <header>
       <div id="carousel" class="carousel vert slide" data-ride="carousel">
 
@@ -96,7 +98,7 @@
                   <i class="user-icon-light far fa-circle fa-lg"></i>
                 </div>
               </div>
-              <div class="user-name"><a href="#">Гость</a></div>
+              <div class="user-name"><a href="#">{{name}}</a></div>
             </div>
           </div>
         </nav>
@@ -129,31 +131,11 @@
 
     <div align="center" class="fond">
       <div id="myfond_gris" v-if="showBack" @click="hideModal"></div>
-      <div class="form-wrapper" id="wrapper-login" v-if="showLoginModal">
-        <img src='./assets/img/f.png' alt='bg1' />
-        <div class="content-wrapper" id="content-login">
-          <h1>С возвращением!</h1>
-          <form class="form-login">
-            <input type="text" name="username" placeholder="Логин" class="input-username" required pattern="[0-9A-Za-z]"/>
-            <input type="password" name="password" placeholder="Пароль" class="input-password" required pattern="[0-9A-Za-z]"/>
-            <button type="submit" class="btn-login">Вход</button>
-          </form>
-          <p>Нету аккаунта? <a href="#" @click="swipeModal">Регистрация</a></p>
-        </div>
-      </div>
-      <div class="form-wrapper" id="wrapper-signup" v-if="showRegisterModal">
-        <img src='./assets/img/f.png' alt='bg2' />
-        <div class="content-wrapper" id="content-signin">
-          <h1>Добро Пожаловать!</h1>
-          <form class="form-login">
-            <input type="email" name="email" placeholder="Email" class="input-email" required="required"/>
-            <input type="text" name="username" placeholder="Логин" class="input-username" required pattern="[0-9A-Za-z]"/>
-            <input type="password" name="password" placeholder="Пароль" class="input-password" required pattern="[0-9A-Za-z]"/>
-            <button type="submit" class="btn-login">Регистрация</button>
-          </form>
-          <p>Есть аккаунт? <a href="#" @click="swipeModal">Вход</a></p>
-        </div>
-      </div>
+
+      <WrapperLogin v-if="showLoginModal"/>
+
+      <WrapperSignup v-if="showRegisterModal"/>
+
     </div>
 
     <link rel="stylesheet" type="text/css" link href="https://db.onlinewebfonts.com/c/0d78b12d6be09203d1fbeb76871a369a?family=Century+Gothic" />
@@ -171,6 +153,21 @@
   @import "assets/css/Bold-BS4-Footer-Simple.css";
   @import "assets/css/login-sign-form.css";
 
+  .swipe-form {
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    margin-top: 30px;
+
+    font-size: 1rem;
+    color: #ec6838;
+  }
+
+  .swipe-form a {
+    color: #FDF3F8;
+    text-decoration: none;
+  }
   .form-wrapper {
     font-family: "Comfortaa";
     font-weight: bold;
@@ -262,24 +259,31 @@
 
 
 <script>
-  // import VueRouter from "vue-router";
-  // import Content from "./views/Content";
-  //
-  // const routes = [
-  //   { path: '/content', component: Content}
-  // ];
-  //
-  // const router = new VueRouter({
-  //   mode: 'history',
-  //   routes: routes
-  // });
+  import WrapperLogin from "./components/Login";
+  import WrapperSignup from "./components/Registration";
   export default {
+    components: {WrapperSignup, WrapperLogin},
     el: '#app',
     data() {
       return {
         showBack: false,
         showLoginModal: false,
-        showRegisterModal: false
+        showRegisterModal: false,
+
+        name: 'Гость',
+        user: null,
+        userString: ''
+      }
+    },
+    created() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.userString = localStorage.getItem('user')
+      if (this.userString === null) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.name = 'Гость'
+      } else {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.name = JSON.parse(this.userString, this.user).login
       }
     },
     methods: {
@@ -301,6 +305,19 @@
           return {
             selector: to.hash
           }
+        }
+      },
+      isUserAutorized: function() {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.userString = localStorage.getItem('user')
+        if (this.userString === null) {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.name = 'Гость'
+          return false
+        } else {
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.name = JSON.parse(this.userString, this.user).login
+          return true
         }
       }
     }
